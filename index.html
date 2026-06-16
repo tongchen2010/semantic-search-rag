@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semantic Search — in-browser embeddings (the heart of RAG)</title>
+  <meta name="description" content="A real sentence-embedding model runs entirely in your browser and ranks text by meaning, not keywords — the retrieval step behind Retrieval-Augmented Generation (RAG)." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%236ea8fe'/><path d='M16 1a15 15 0 000 30z' fill='%238b7cff'/></svg>" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo">◵</span>
+        <div>
+          <h1>Semantic Search</h1>
+          <p class="tagline">Search by <strong>meaning, not keywords</strong>. A real embedding model (all-MiniLM-L6-v2) runs <em>in your browser</em> — this is the retrieval step behind <strong>RAG</strong>.</p>
+        </div>
+      </div>
+      <a class="ghlink" id="repo-link" href="#" target="_blank" rel="noopener">&lt;/&gt; Source</a>
+    </header>
+
+    <section class="panel">
+      <div class="search-row">
+        <input id="query" type="text" placeholder="Describe what you're looking for…" disabled />
+        <button id="search-btn" class="primary" disabled>Search</button>
+      </div>
+      <div class="examples" id="examples">
+        <button class="chip" disabled>a pet relaxing in the sun</button>
+        <button class="chip" disabled>financial markets crashing</button>
+        <button class="chip" disabled>how plants make food</button>
+        <button class="chip" disabled>software that learns from data</button>
+      </div>
+      <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <p class="status" id="status">Loading the embedding model (~23 MB, first time only)…</p>
+      </div>
+    </section>
+
+    <main class="results" id="results"></main>
+
+    <footer class="pagefoot">
+      <span>Embeddings computed locally with <a href="https://github.com/huggingface/transformers.js" target="_blank" rel="noopener">🤗 Transformers.js</a> (all-MiniLM-L6-v2). Cosine similarity ranks the corpus by meaning. Nothing leaves your browser.</span>
+    </footer>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
